@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽上传</title>
+    <style>
+    </style>
+</head>
+<body>
+    
+<div id="koko" style="width: 500px;min-height:100px; background:wheat; margin: 0 auto;">
+<p id="tip">拖拽文件到这！！！</p> 
+<!-- <input type="file" name="" id="file" hidden> -->
+</div>
+
+
+
+    <script>
+        koko.ondragenter = function(e){
+            e.stopPropagation();
+            e.preventDefault();  //
+
+        this.style.background = '#ccc'
+        this.style.border = '3px dashed red'
+        }
+        koko.ondragleave = function(e){
+            e.stopPropagation();
+            e.preventDefault();  //必填字段
+        this.style.background = 'wheat'
+        this.style.border = ''
+        }
+
+        koko.ondragover = function(e){
+            e.stopPropagation();
+            e.preventDefault();  //必填字段
+            console.log(88899999)
+        }
+
+       
+        koko.ondrop = function(e){
+        e.stopPropagation();
+            e.preventDefault(); 
+        console.log(e.dataTransfer) 
+        console.log(e.dataTransfer.files)
+        this.style.background = 'green'
+        tip.innerHTML = '拖拽成功！！！';
+        // [...e.dataTransfer.files].forEach(item => {
+            let p = document.createElement('p')
+            p.innerHTML = e.dataTransfer.files[0].name;
+            this.append(p)
+        // });
+    }
+    
+    
+    
+    </script>
+</body>
+</html>
